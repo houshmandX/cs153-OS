@@ -24,6 +24,7 @@ sys_exit(int status) //this needs a helper function(pass int status)
 int
 sys_wait(int *status)
 {
+  argptr(0, (char**) &status, sizeof(int*)); //the status on wait is gonna be the argument pointer
   return wait(status);
 }
 
