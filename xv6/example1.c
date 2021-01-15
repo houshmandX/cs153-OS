@@ -7,15 +7,15 @@ int main(int argc, char *argv[])
 {
 
     int exitWait(void);
-    //int waitPid(void);
+    int waitPid(void);
     //int CELEBW02(void);
 
     printf(1, "\n This program tests the correctness of your lab#1\n");
 
     if (atoi(argv[1]) == 1)
         exitWait();
-    //else if (atoi(argv[1]) == 2)
-        //waitPid();
+    else if (atoi(argv[1]) == 2)
+        waitPid();
     //else if (atoi(argv[1]) == 3)
        // CELEBW02();
     else
@@ -63,7 +63,7 @@ int exitWait(void)
     }
     return 0;
 }
-/*
+
 int waitPid(void)
 {
 
@@ -107,7 +107,7 @@ int waitPid(void)
 
     return 0;
 }
-
+/*
 int CELEBW02(void)
 {
 

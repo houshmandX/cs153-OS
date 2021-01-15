@@ -313,6 +313,55 @@ wait(int *status)
   }
 }
 
+// the waitpid act like wait system call with additional properties
+// The system call must wait for a process with a pid that equals to one provided by the pid argument
+// The return value must be the process id of the process that was terminated or -1(if process does not exist or unexpected error occured)
+//blocking waitpid where kernel prevents the current process from execution
+int
+waitpid(int pid, int *status, int options)
+{
+    struct proc *p;
+    int havekids;
+    struct proc *curproc = myproc();
+
+    acquire(&ptable.lock);
+    for(;;){
+        // in here we need to scan through table looking for exited children.
+        havekids = 0;
+        //ptable is process table: saves process 
+        for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+            if(p->pid != pid){//if the pid that we passed not the one we need, we are child
+              continue;
+            }
+            havekids = 1;
+            if(p->state == ZOMBIE){
+                // Found one.
+                pid = p->pid;
+                kfree(p->kstack);
+                p->kstack = 0;
+                freevm(p->pgdir);
+                p->pid = 0;
+                p->parent = 0;
+                p->name[0] = 0;
+                p->killed = 0;
+                p->state = UNUSED;
+                release(&ptable.lock);
+                if(status) {
+                    *status =p->pstatus;
+                }
+                return pid;
+            }
+        }
+
+        // No point waiting if we don't have any children.
+        if(!havekids || curproc->killed){
+            release(&ptable.lock);
+
+            return -1;
+        }
+    }
+}
+
 //PAGEBREAK: 42
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
