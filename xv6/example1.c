@@ -1,8 +1,6 @@
 #include "types.h"
 #include "user.h"
 
-#define WNOHANG 1
-
 int main(int argc, char *argv[])
 {
 
