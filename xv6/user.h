@@ -4,7 +4,7 @@ struct rtcdate;
 // system calls
 int fork(void);
 void exit(int status) __attribute__((noreturn));  // instruction a) change int to void, and int status
-int wait(int *status); //updated system call to in *status
+int wait(int *status); //updated system call to int *status
 int waitpid(int pid, int *status, int options); // The system call wait for a process (not necessary a child process)
 int pipe(int*);
 int write(int, const void*, int);
