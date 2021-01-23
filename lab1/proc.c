@@ -595,13 +595,10 @@ debug(void)
   //int havekids, pid;
   struct proc *curproc = myproc();
 
-  cprintf("%s\n",curproc->kstack);
-  cprintf("number1: %d\n",curproc->pid);
-  cprintf("%s\n",curproc->parent);
-  cprintf("%s\n",curproc->name[0]);
-  cprintf("number2: %d\n",curproc->pid);
-  cprintf("%d\n",curproc->killed);
-  cprintf("numbr3: %d\n",curproc->pid);
+  cprintf("pid: %d\n",curproc->pid);
+  cprintf("state: %s\n", curproc->state);
+  cprintf("name: %s\n",curproc->name);
+  cprintf("status: %d\n",curproc->pstatus);
 
 }
 
