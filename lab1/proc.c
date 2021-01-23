@@ -600,7 +600,7 @@ debug(void)
   //printf("%s",curproc->parent);
   //printf("%s",curproc->name[0]);
   //printf("%d",curproc->killed);
-  printf("testing");
+  cprintf("testing");
 
 }
 
