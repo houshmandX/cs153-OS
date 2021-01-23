@@ -6,6 +6,7 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+#include <stdio.h>
 
 struct {
   struct spinlock lock;
@@ -590,7 +591,7 @@ procdump(void)
 void
 debug(void)
 {
-  struct proc *p;
+  //struct proc *p;
   //int havekids, pid;
   struct proc *curproc = myproc();
 
