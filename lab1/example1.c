@@ -129,14 +129,14 @@ int Debug(void)
             {
                 printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), -1);
                 debug();
-                //exit(-1);
+                exit(-1);
                 }
         }
         else if (pid > 0)
         { // only the parent executes this code
             ret_pid = wait(&exit_status);
-            printf(1, "\n This is the parent: child with PID# %d has exited with status %d\n", ret_pid, exit_status);
             debug();
+            printf(1, "\n This is the parent: child with PID# %d has exited with status %d\n", ret_pid, exit_status);
         }
         else // something went wrong with fork system call
         {
