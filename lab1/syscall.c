@@ -104,6 +104,7 @@ extern int sys_wait(void);
 extern int sys_waitpid(int pid, int *status, int options);//added waitpid in syscall as well
 extern int sys_write(void);
 extern int sys_uptime(void);
+extern int sys_debug(void); //my syscall debug
 
 static int (*syscalls[])() = {
 [SYS_fork]    sys_fork,
@@ -128,6 +129,7 @@ static int (*syscalls[])() = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_debug]   sys_debug,
 };
 
 void

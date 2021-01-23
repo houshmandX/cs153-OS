@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 
     int exitWait(void);
     int waitPid(void);
-    //int CELEBW02(void);
+    int debug(void);
 
     printf(1, "\n This program tests the correctness of your lab#1\n");
 
@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
         exitWait();
     else if (atoi(argv[1]) == 2)
         waitPid();
-    //else if (atoi(argv[1]) == 3)
-       // CELEBW02();
+    else if (atoi(argv[1]) == 3)
+        debug();
     else
         printf(1, "\ntype \"lab1 1\" to test exit and wait, \"lab1 2\" to test waitpid and \"lab1 3\" to test the extra credit WNOHANG option \n");
 
@@ -105,38 +105,44 @@ int waitPid(void)
 
     return 0;
 }
-/*
-int CELEBW02(void)
+
+int Debug(void)
 {
+    int pid, ret_pid, exit_status;
+    int i;
+    // use this part to test exit(int status) and wait(int* status)
 
-    printf(1, "\n  Part e) the waitpid option WNOHANG, test program CELEBW02 \n");
+    printf(1, "\n  Parts a & b) testing exit(int status) and wait(int* status):\n");
 
-    int pid, retpid;
-    int status;
-
-    if ((pid = fork()) < 0)
-        printf(2, "fork() error");
-    else if (pid == 0)
+    for (i = 0; i < 2; i++)
     {
-        sleep(5);
-        exit(1);
-    }
-    else
-        do
-        {
-            if ((retpid = waitpid(pid, &status, WNOHANG)) == -1)
-                printf(2, "wait() error");
-            else if (retpid == 0)
+        pid = fork();
+        if (pid == 0)
+        { // only the child executed this code
+            if (i == 0)
             {
-                printf(1, "child is still running \n");
-                sleep(1);
+                printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), 0);
+                debug();
+                exit(0);
             }
             else
             {
-                printf(1, "child exited with status of %d\n", status);
+                printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), -1);
+                debug();
+                exit(-1);
             }
-        } while (retpid == 0);
-
+        }
+        else if (pid > 0)
+        { // only the parent executes this code
+            ret_pid = wait(&exit_status);
+            printf(1, "\n This is the parent: child with PID# %d has exited with status %d\n", ret_pid, exit_status);
+        }
+        else // something went wrong with fork system call
+        {
+            printf(2, "\nError using fork\n");
+            debug();
+            exit(-1);
+        }
+    }
     return 0;
 }
-*/

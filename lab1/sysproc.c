@@ -99,3 +99,10 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_debug(void)
+{
+  debug();
+  return 0;
+}

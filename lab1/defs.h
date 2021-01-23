@@ -121,6 +121,7 @@ int             wait(int *status);
 int             waitpid(int pid, int *status, int options); // The system call wait for a process (not necessary a child process)
 void            wakeup(void*);
 void            yield(void);
+void            debug(void); //my new syscall "debug"
 
 // swtch.S
 void            swtch(struct context**, struct context*);
