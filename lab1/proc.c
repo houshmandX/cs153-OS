@@ -593,14 +593,14 @@ debug(void)
 {
   //struct proc *p;
   //int havekids, pid;
-  //struct proc *curproc = myproc();
+  struct proc *curproc = myproc();
 
-  //printf("%s",curproc->kstack);
+  cprintf("%s",curproc->kstack);
   //printf("%d",curproc->pid);
   //printf("%s",curproc->parent);
   //printf("%s",curproc->name[0]);
-  //printf("%d",curproc->killed);
-  cprintf("testing");
+  //cprintf("%d",curproc->killed);
+  //cprintf("testing");
 
 }
 
