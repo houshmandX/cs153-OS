@@ -135,7 +135,7 @@ int Debug(void)
         else if (pid > 0)
         { // only the parent executes this code
             ret_pid = wait(&exit_status);
-            debug();
+            //debug();
             printf(1, "\n This is the parent: child with PID# %d has exited with status %d\n", ret_pid, exit_status);
         }
         else // something went wrong with fork system call
