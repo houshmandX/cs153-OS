@@ -123,13 +123,13 @@ int Debug(void)
             {
                 printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), 0);
                 debug();
-                //exit(0);
+                exit(0);
             }
             else
             {
                 printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), -1);
                 debug();
-                //exit(-1);
+                exit(-1);
             }
         }
         else if (pid > 0)
@@ -141,7 +141,7 @@ int Debug(void)
         {
             printf(2, "\nError using fork\n");
             debug();
-            //exit(-1);
+            exit(-1);
         }
     }
     return 0;
