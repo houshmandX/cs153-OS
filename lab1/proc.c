@@ -597,10 +597,10 @@ debug(void)
 
   cprintf("%s\n",curproc->kstack);
   cprintf("number1: %d\n",curproc->pid);
-  cprintf("%s",curproc->parent);
-  cprintf("%s",curproc->name[0]);
+  cprintf("%s\n",curproc->parent);
+  cprintf("%s\n",curproc->name[0]);
   cprintf("number2: %d\n",curproc->pid);
-  cprintf("%d",curproc->killed);
+  cprintf("%d\n",curproc->killed);
   cprintf("numbr3: %d\n",curproc->pid);
 
 }
