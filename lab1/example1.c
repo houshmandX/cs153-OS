@@ -128,10 +128,9 @@ int Debug(void)
             else
             {
                 printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), -1);
-                //debug();
-                exit(-1);
                 debug();
-            }
+                //exit(-1);
+                }
         }
         else if (pid > 0)
         { // only the parent executes this code
