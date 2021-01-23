@@ -596,10 +596,10 @@ debug(void)
   struct proc *curproc = myproc();
 
   cprintf("pid: %d\n",curproc->pid);
-  cprintf("state: %s\n", curproc->state);
+  //cprintf("state: %s\n", curproc->state);
   cprintf("name: %s\n",curproc->name);
   cprintf("status: %d\n",curproc->pstatus);
-
+  cprintf("context: %s\n", curproc->context);
 }
 
 
