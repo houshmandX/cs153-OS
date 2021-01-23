@@ -596,10 +596,10 @@ debug(void)
   struct proc *curproc = myproc();
 
   printf("%s",curproc->kstack);
-  printf("%s",curproc->pid);
-  printf("%s",curproc->parent);
+  printf("%d",curproc->pid);
+  //printf("%s",curproc->parent);
   printf("%s",curproc->name[0]);
-  printf("%s",curproc->killed);
+  printf("%d",curproc->killed);
 
 }
 
