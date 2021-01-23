@@ -591,12 +591,12 @@ procdump(void)
 void
 debug(void)
 {
-  struct proc *p;
+  //struct proc *p;
   //int havekids, pid;
-  //struct proc *curproc = myproc();
+  struct proc *curproc = myproc();
 
   //cprintf("%s",curproc->kstack);
-  cprintf("%d",p->pid);
+  cprintf("%d",curproc->pid);
   //printf("%s",curproc->parent);
   //printf("%s",curproc->name[0]);
   //cprintf("%d",curproc->killed);
