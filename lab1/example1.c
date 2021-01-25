@@ -112,7 +112,7 @@ int Debug(void)
     int i;
     // use this part to test exit(int status) and wait(int* status)
 
-    printf(1, "\n  Parts a & b) testing exit(int status) and wait(int* status):\n");
+    printf(1, "\n  Parts D, extra creadit) testing debug(): \n");
 
     for (i = 0; i < 2; i++)
     {
@@ -121,13 +121,13 @@ int Debug(void)
         { // only the child executed this code
             if (i == 0)
             {
-                printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), 0);
+                printf(1, "\nThis is child with PID# %d\n", getpid());
                 debug();
                 exit(0);
             }
             else
             {
-                printf(1, "\nThis is child with PID# %d and I will exit with status %d\n", getpid(), -1);
+                printf(1, "\nThis is child with PID# %d\n", getpid());
                 debug();
                 exit(-1);
                 }
@@ -135,8 +135,7 @@ int Debug(void)
         else if (pid > 0)
         { // only the parent executes this code
             ret_pid = wait(&exit_status);
-            //debug();
-            printf(1, "\n This is the parent: child with PID# %d has exited with status %d\n", ret_pid, exit_status);
+            printf(1, "\n This is the parent: child with PID# %d\n", ret_pid);
         }
         else // something went wrong with fork system call
         {
