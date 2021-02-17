@@ -15,12 +15,13 @@ int main(int argc, char *argv[])
   if (atoi(argv[1]) == 1){
     printf(1, "\n Testing Scheduler\n");
     PScheduler();
-    return 0;
+    
   // } else if (atoi(argv[1]) == 2){
   //   printf(1, "\n Testing Donation\n");
   //   donationScheduler(3); //donation amount
   // }
   }
+  return 0;
   //exit();
 }
 
