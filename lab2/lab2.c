@@ -12,9 +12,10 @@ int main(int argc, char *argv[])
 
   printf(1, "\n This program tests the correctness of your lab#2\n");
 
-  if (atoi(argv[1]) == 1){
-    printf(1, "\n Testing Scheduler\n");
+  // if (atoi(argv[1]) == 1){
+  //   printf(1, "\n Testing Scheduler\n");
     PScheduler();
+    return 0;
   // } else if (atoi(argv[1]) == 2){
   //   printf(1, "\n Testing Donation\n");
   //   donationScheduler(3); //donation amount
