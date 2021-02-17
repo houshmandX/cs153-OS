@@ -323,6 +323,7 @@ void
 scheduler(void)
 {
   struct proc *p;
+  struct proc *i; //index
   struct cpu *c = mycpu();
   c->proc = 0;
   
@@ -332,9 +333,14 @@ scheduler(void)
 
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
-    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){ //** find a process that is running
       if(p->state != RUNNABLE)
         continue;
+      //** iterate through to find a process that has a higher priority ** 
+      for(i = p + 1; i < &ptable.proc[NPROC]; i++){
+        if(i->state == RUNNABLE && i->priority < p->priority)
+          p = i;
+      }  
 
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
@@ -531,4 +537,22 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+//a new system call to change the priority of a process
+int
+set_priority(int pid, int priority)
+{
+    struct proc *p;
+    //ptable has all process id
+    acquire(&ptable.lock);//since we changing the perioritywe dont want to have any data races
+    for(p =ptable.proc; p <&ptable.proc[NPROC]; p++) {
+        if(p->pid ==pid) { 
+            p->priority =priority;
+            break;
+        }
+    }
+
+    release(&ptable.lock);
+    return pid;
 }

@@ -89,3 +89,21 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+// a new system call to change the priority of a process
+int
+sys_set_priority(void)
+{
+    int pid;
+    int priority;
+    
+    //pid can not be less tha 0
+    if(argint(0,&pid) <0) {
+        return -1;
+    }
+    //priority can not be less than 0
+    if(argint(1, &priority) <0) {
+        return -1;
+    }
+
+    return set_priority(pid, priority);
+}
