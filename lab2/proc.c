@@ -545,7 +545,6 @@ int
 set_priority(int pid, int priority)
 {
     struct proc *p;
-    pid = getpid();
     //ptable has all process id
     acquire(&ptable.lock);//since we changing the perioritywe dont want to have any data races
     for(p =ptable.proc; p <&ptable.proc[NPROC]; p++) {
