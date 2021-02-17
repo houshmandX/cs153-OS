@@ -15,12 +15,13 @@ int main(int argc, char *argv[])
   if (atoi(argv[1]) == 1){
     printf(1, "\n Testing Scheduler\n");
     PScheduler();
+    return 0;
   // } else if (atoi(argv[1]) == 2){
   //   printf(1, "\n Testing Donation\n");
   //   donationScheduler(3); //donation amount
   // }
   }
-  exit();
+  //exit();
 }
 
 int PScheduler(void){
@@ -61,7 +62,7 @@ int PScheduler(void){
     }
     printf(1,"\n if processes with highest priority finished first then its correct \n");
   }
-
+  exit();
   return 0;
 }
 
