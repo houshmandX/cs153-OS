@@ -89,8 +89,8 @@ int donationScheduler(int value){
        asm("nop");
      }
    }
-   printf(1, "\n Parent with pid %d has donated %d priority to child %d \n", getpid(), value, parent);
-   //printf(1, "\n Parent with pid %d has donated %d priority to child %d \n", parent, value, getpid());
+   //printf(1, "\n Parent with pid %d has donated %d priority to child %d \n", getpid(), value, parent);
+   printf(1, "\n Parent with pid %d has donated %d priority to child %d \n", parent, value, getpid());
    donate_priority(value);
    for (i=0;i<50000;i++) {
      for(j=0;j<10000;j++) {
