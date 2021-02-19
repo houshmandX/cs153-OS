@@ -5,6 +5,7 @@ int main(int argc, char *argv[])
 {
 	
 	int PScheduler(void);
+	int AGcheduler(void);
   printf(1, "\n This program tests the correctness of your lab#2\n");
   
 	//PScheduler();
