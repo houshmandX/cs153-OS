@@ -351,7 +351,7 @@ scheduler(void)
             i->priority--;
           }
         }
-         p = i;
+         p = i->priority;
         }
 
       }  
