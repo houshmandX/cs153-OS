@@ -553,3 +553,19 @@ set_priority(int priority)
 
     return 0;
 }
+
+int
+donate_priority(int priority)
+{
+    struct proc *curproc = myproc();
+  
+    acquire(&ptable.lock);
+    curproc -> priority += priority;
+    release(&ptable.lock);
+
+    //remove priority from parent
+    acquire(&ptable.lock);
+    curproc->parent -> priority -= priority;
+    release(&ptable.lock);
+    return 1;
+}

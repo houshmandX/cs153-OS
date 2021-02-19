@@ -100,3 +100,15 @@ sys_set_priority(void)
     }
     return set_priority(priority);
 }
+
+int
+sys_donate_priority(void)
+{
+    int priority;
+
+    if(argint(0, &priority) <0) {
+        return -1;
+    }
+    return donate_priority(priority);
+}
+

@@ -8,8 +8,17 @@ int main(int argc, char *argv[])
 
   printf(1, "\n This program tests the correctness of your lab#2\n");
   
-	PScheduler();
-	return 0;
+	//PScheduler();
+	//return 0;
+
+	if (atoi(argv[1]) == 1){
+    printf(1, "\n Testing Scheduler\n");
+    PScheduler();
+  } else if (atoi(argv[1]) == 2){
+    printf(1, "\n Testing Donation\n");
+    donationScheduler(3); //donation amount
+  }
+  return 0;
  }
   
     
@@ -54,3 +63,46 @@ int main(int argc, char *argv[])
 }
 	exit();		
 	return 0;}
+
+int donationScheduler(int value){
+ int parent, pid, i, j;
+
+ printf(1, "\n Step 1: Testing the donate systema call:\n");
+ printf(1, " Step 2: The parent will have a higher priority than the child\n");
+ printf(1, " Step 3: The parent will donate the value amount of priority to the child\n");
+ printf(1, " Step 4: The priority of the child will go up by the same amount as the parent will go down\n");
+ set_priority(20);
+ parent = getpid();
+ printf(1, "\n Child with pid %d has priority %d \n ", getpid(), get_priority(getpid()) );
+ pid = fork();
+
+
+ if(pid > 0){
+   wait();
+   printf(1, "\n Child with pid %d now has priority %d after donation \n", getpid(), get_priority(getpid()) );
+ }
+ else if(pid == 0){
+   set_priority(10);
+   printf(1, " Parent with pid %d has priority %d \n ", getpid(), get_priority(getpid()) );
+   for (i=0;i<50000;i++) {
+     for(j=0;j<10000;j++) {
+       asm("nop");
+     }
+   }
+   printf(1, "\n Parent with pid %d has donated %d priority to child %d \n", getpid(), value, parent);
+   //printf(1, "\n Parent with pid %d has donated %d priority to child %d \n", parent, value, getpid());
+   donate_priority(value);
+   for (i=0;i<50000;i++) {
+     for(j=0;j<10000;j++) {
+       asm("nop");
+     }
+   }
+   printf(1, "\n Parent with pid %d now has priority %d after donation \n", getpid(), get_priority(getpid()) );
+   exit();
+ }
+ else{
+   printf(2, "\n Error \n ");
+ }
+
+ return 0;
+}	

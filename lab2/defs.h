@@ -121,7 +121,7 @@ int             wait(void);
 void            wakeup(void*);
 void            yield(void);
 int             set_priority(int); //passing process ID, priority value, to change the priority
-
+int             donate_priority(int);
 // swtch.S
 void            swtch(struct context**, struct context*);
 
