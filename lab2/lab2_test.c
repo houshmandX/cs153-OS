@@ -86,11 +86,15 @@ int AGcheduler(void){
 	else if ( pid == 0) {
 		set_priority(30-10*i);
 		//set_priority(30-10*i);
-        for (a=0;a<500000;a++) {
-			for(b=0;b<10000;b++) {
+
+        for (a=0;a<80000;a++) {
+			for(b=0;b<2000;b++) {
+				asm("nop");
+			}
+		}
 		for (j=0;j<50000;j++) {
 			for(k=0;k<1000;k++) {
-				asm("nop"); }}}}
+				asm("nop"); }}
 		printf(1, "\n child# %d with priority %d has finished! \n",getpid(),get_priority());		
 		exit();
         }
