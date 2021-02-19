@@ -339,8 +339,18 @@ scheduler(void)
         continue;
       //** iterate through to find a process that has a higher priority ** 
       for(i = p + 1; i < &ptable.proc[NPROC]; i++){
-        if(i->state == RUNNABLE && i->priority < p->priority)
+        if(i->state == RUNNABLE && i->priority < p->priority){
           p = i;
+        }
+        if(i->state == RUNNABLE){
+          if(i->priority - 1 >= 0){
+            i->priority--;
+          }
+          if(i->priority + 1 <= 31){
+            i->priority++;
+          }
+        }
+
       }  
 
       // Switch to chosen process.  It is the process's job
