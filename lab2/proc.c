@@ -547,7 +547,7 @@ set_priority(int priority)
     // myproc() returns the structure
     struct proc *curproc = myproc();
 
-    release(&ptable.lock);
+    acquire(&ptable.lock);
     curproc -> priority = priority;
     release(&ptable.lock);
 
