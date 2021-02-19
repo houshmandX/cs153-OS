@@ -73,17 +73,17 @@ int donationScheduler(int value){
  printf(1, " Step 4: The priority of the child will go up by the same amount as the parent will go down\n");
  set_priority(20);
  parent = getpid();
- printf(1, "\n Child with pid %d has priority %d \n ", getpid(), get_priority(getpid()) );
+ printf(1, "\n Child with pid %d has priority %d \n ", getpid(), get_priority() );
  pid = fork();
 
 
  if(pid > 0){
    wait();
-   printf(1, "\n Child with pid %d now has priority %d after donation \n", getpid(), get_priority(getpid()) );
+   printf(1, "\n Child with pid %d now has priority %d after donation \n", getpid(), get_priority() );
  }
  else if(pid == 0){
    set_priority(10);
-   printf(1, " Parent with pid %d has priority %d \n ", getpid(), get_priority(getpid()) );
+   printf(1, " Parent with pid %d has priority %d \n ", getpid(), get_priority());
    for (i=0;i<50000;i++) {
      for(j=0;j<10000;j++) {
        asm("nop");
@@ -97,7 +97,7 @@ int donationScheduler(int value){
        asm("nop");
      }
    }
-   printf(1, "\n Parent with pid %d now has priority %d after donation \n", getpid(), get_priority(getpid()) );
+   printf(1, "\n Parent with pid %d now has priority %d after donation \n", getpid(), get_priority() );
    exit();
  }
  else{

@@ -571,7 +571,7 @@ donate_priority(int priority)
 }
 
 int
-get_priority(int pid)
+get_priority()
 {
     struct proc *curproc = myproc();
     return curproc-> priority;
