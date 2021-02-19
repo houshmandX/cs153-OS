@@ -545,10 +545,25 @@ int
 set_priority(int priority)
 {
     // myproc() returns the structure
-    struct proc *curproc = myproc(); 
-    acquire(&ptable.lock);
+    struct proc *curproc = myproc();
+    /* 
+    release(&ptable.lock);
     curproc -> priority = priority;
     release(&ptable.lock);
 
     return curproc->priority;
+    */
+
+    struct proc *p;
+
+    acquire(&ptable.lock);
+    for(p =ptable.proc; p <&ptable.proc[NPROC]; p++) {
+        if(p->pid == curproc->pid) {
+            p->priority =priority;
+            break;
+        }
+    }
+
+    release(&ptable.lock);
+    return 0;
 }
