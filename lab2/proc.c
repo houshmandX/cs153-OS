@@ -551,7 +551,7 @@ set_priority(int priority)
     curproc -> priority = priority;
     release(&ptable.lock);
 
-    return curproc->priority;
+    return 0;
     
     /*
 
