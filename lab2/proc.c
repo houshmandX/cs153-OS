@@ -542,18 +542,12 @@ procdump(void)
 
 //a new system call to change the priority of a process
 int
-set_priority(int pid, int priority)
+set_priority(int priority)
 {
-    struct proc *p;
-    //ptable has all process id
-    acquire(&ptable.lock);//since we changing the perioritywe dont want to have any data races
-    for(p =ptable.proc; p <&ptable.proc[NPROC]; p++) {
-        if(p->pid ==pid) { 
-            p->priority =priority;
-            break;
-        }
-    }
+    // myproc() returns the structure
+    struct proc *curproc = myproc(); 
+    
+    curproc -> priority = priority;
 
-    release(&ptable.lock);
-    return pid;
+    return 0;
 }

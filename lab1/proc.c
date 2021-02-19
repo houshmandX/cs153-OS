@@ -334,7 +334,7 @@ waitpid(int pid, int *status, int options)
             if(p->pid != pid){//if the pid that we passed not the one we need, we are child
               continue;
             }
-            havekids = 1;
+            havekids = 1; //has one child 
             if(p->state == ZOMBIE){
                 // Found one.
                 pid = p->pid;
