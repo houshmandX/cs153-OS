@@ -343,11 +343,13 @@ scheduler(void)
           p = i;
         }
         if(i->state == RUNNABLE){
-          if(i->priority - 1 >= 0){
-            i->priority--;
-          }
           if(i->priority + 1 <= 31){
             i->priority++;
+          }
+        }
+        else{
+          if(i->priority - 1 >= 0){
+            i->priority--;
           }
         }
 
