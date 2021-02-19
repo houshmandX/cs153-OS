@@ -105,5 +105,5 @@ sys_set_priority(void)
         return -1;
     }
 
-    return set_priority(pid, priority);
+    return set_priority(priority);
 }
