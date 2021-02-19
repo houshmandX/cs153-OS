@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
 	
 	int PScheduler(void);
-
+    int donationScheduler(int value);
   printf(1, "\n This program tests the correctness of your lab#2\n");
   
 	//PScheduler();

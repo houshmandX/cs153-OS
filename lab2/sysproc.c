@@ -112,3 +112,14 @@ sys_donate_priority(void)
     return donate_priority(priority);
 }
 
+int
+sys_get_priority(void)
+{
+    int pid;
+
+    if(argint(0,&pid) <0) {
+        return -1;
+    }
+    return get_priority(pid);
+}
+

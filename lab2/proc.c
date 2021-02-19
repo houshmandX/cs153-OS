@@ -569,3 +569,10 @@ donate_priority(int priority)
     release(&ptable.lock);
     return 1;
 }
+
+int
+get_priority(int pid)
+{
+    struct proc *curproc = myproc();
+    return curproc-> priority;
+}
