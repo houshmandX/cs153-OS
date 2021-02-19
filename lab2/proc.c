@@ -552,21 +552,4 @@ set_priority(int priority)
     release(&ptable.lock);
 
     return 0;
-    
-    /*
-
-    struct proc *p;
-
-    acquire(&ptable.lock);
-    for(p =ptable.proc; p <&ptable.proc[NPROC]; p++) {
-        if(p->pid == curproc->pid) {
-            p->priority =priority;
-            break;
-        }
-    }
-
-    release(&ptable.lock);
-    
-    return curproc->priority;
-    */
 }

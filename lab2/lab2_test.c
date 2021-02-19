@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
 	if (pid > 0 ) {
 		continue;}
 	else if ( pid == 0) {
-        //int myp = set_priority(30-10*i);
 		set_priority(30-10*i);
 
 		for (j=0;j<50000;j++) {
