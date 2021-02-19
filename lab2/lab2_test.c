@@ -91,6 +91,9 @@ int AGcheduler(void){
 			for(b=0;b<2000;b++) {
 				asm("nop");
 			}
+			if(a % 100 ==0 && get_priority() != 31) {
+				printf(1, "\n process with pid %d has priority %d", getpid(), get_priority());
+			}
 		}
 		for (j=0;j<50000;j++) {
 			for(k=0;k<1000;k++) {
