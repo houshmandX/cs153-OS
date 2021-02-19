@@ -565,5 +565,5 @@ set_priority(int priority)
     }
 
     release(&ptable.lock);
-    return curproc->pid;
+    return p->priority;
 }
