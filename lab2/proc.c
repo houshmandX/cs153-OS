@@ -339,7 +339,7 @@ scheduler(void)
         continue;
       //** iterate through to find a process that has a higher priority ** 
       for(i = p + 1; i < &ptable.proc[NPROC]; i++){
-        if(i->state == RUNNABLE && i->priority > p->priority)
+        if(i->state == RUNNABLE && i->priority < p->priority)
           p = i;
       }  
 
@@ -545,8 +545,8 @@ int
 set_priority(int priority)
 {
     // myproc() returns the structure
-    acquire(&ptable.lock);
     struct proc *curproc = myproc(); 
+    acquire(&ptable.lock);
     curproc -> priority = priority;
     release(&ptable.lock);
 
