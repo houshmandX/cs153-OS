@@ -24,7 +24,6 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int set_priority(int);
-int donate_priority(int);//extra credit 2
 int get_priority();
 
 // ulib.c
