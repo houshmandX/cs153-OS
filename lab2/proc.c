@@ -342,21 +342,19 @@ scheduler(void)
         if(i->state == RUNNABLE && i->priority < p->priority){
         p = i;
         }
+        acquire(&ptable.lock);
         if(i->state == RUNNABLE){
-          acquire(&ptable.lock);
           if(i->priority + 1 <= 31){
             i->priority++;
           }
-          release(&ptable.lock);
         }
         else{
-          acquire(&ptable.lock);
           if(i->priority - 1 >= 0){
             i->priority--;
           }
-          release(&ptable.lock);
+        release(&ptable.lock);
         }
-    } 
+      } 
 
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
