@@ -342,23 +342,22 @@ scheduler(void)
         if(i->state == RUNNABLE && i->priority < p->priority){
         p = i;
         }
-        /*
         if(i->state == RUNNABLE){
-          if(i->priority + 1 <= 31){
-            i->priority++;
-          }
-        }
-        else{
           if(i->priority - 1 >= 0){
             i->priority--;
           }
         }
-        */
       } 
 
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
+      if(p->state == RUNNABLE){
+          if(p->priority + 1 <= 31){
+            p->priority++;
+          }
+        }
+    
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
