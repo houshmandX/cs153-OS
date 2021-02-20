@@ -85,17 +85,16 @@ int AGcheduler(void){
 		continue;}
 	else if ( pid == 0) {
 		set_priority(30-10*i);
-		//set_priority(30-10*i);
-        //int justcurrent =  get_priority();
+        int justcurrent =  get_priority();
         
         for (a=0;a<80000;a++) {
 			for(b=0;b<2000;b++) {
 				asm("nop");
 			}
-			//if(get_priority() != justcurrent) {
-			//	justcurrent = get_priority();
+			if(get_priority() != justcurrent) {
+				justcurrent = get_priority();
 				printf(1, "\n process with pid %d has priority %d", getpid(), get_priority());
-			//}
+			}
 		}
 		for (j=0;j<50000;j++) {
 			for(k=0;k<1000;k++) {
