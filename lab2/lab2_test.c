@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     PScheduler();
   } else if (atoi(argv[1]) == 2){
     printf(1, "\n Testing aging of priority\n");
-    AGcheduler(); //donation amount
+    AGcheduler(); 
   }
   return 0;
   
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 
 int AGcheduler(void){
 		 
-    // use this part to test the priority scheduler. Assuming that the priorities range between range between 0 to 31
+    // use this part to test aging of priority. Assuming that the priorities range between range between 0 to 31
     // 0 is the highest priority and 31 is the lowest priority.  
 
   int pid;
