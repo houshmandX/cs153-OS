@@ -92,7 +92,7 @@ int AGcheduler(void){
 			for(b=0;b<2000;b++) {
 				asm("nop");
 			}
-			if(a % 100 ==0 && get_priority() != justcurrent) {
+			if(get_priority() != justcurrent) {
 				justcurrent = get_priority();
 				printf(1, "\n process with pid %d has priority %d", getpid(), get_priority());
 			}
