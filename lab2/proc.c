@@ -342,7 +342,6 @@ scheduler(void)
         if(i->state == RUNNABLE && i->priority < p->priority){
         p = i;
         }
-        acquire(&ptable.lock);
         if(i->state == RUNNABLE){
           if(i->priority + 1 <= 31){
             i->priority++;
@@ -352,7 +351,6 @@ scheduler(void)
           if(i->priority - 1 >= 0){
             i->priority--;
           }
-        release(&ptable.lock);
         }
       } 
 
