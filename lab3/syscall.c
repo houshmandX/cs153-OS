@@ -31,7 +31,7 @@ fetchstr(uint addr, char **pp)
   char *s, *ep;
   
   *pp = (char*)addr;
-  ep = (char*)STACKBASE - 4; //starts at stack base
+  ep = (char*)STACKBASE; //starts at stack base
   for(s = *pp; s < ep; s++){
     if(*s == 0)
       return s - *pp;
