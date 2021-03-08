@@ -338,7 +338,7 @@ copyuvm(pde_t *pgdir, uint sz)
       goto bad;
     }
   }
-  // 0x80000000 is stack base acording to slides
+  // 0x7FFFFFFC is stack base acording to slides
   // STACKBASE - p->numPages * PGSIZE + 4; bounds for the specific parent process
   // i < STACKBASE ; bc we want to read everything for user stack, 
   // and not anything above the user stack
